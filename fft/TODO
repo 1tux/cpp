@@ -1,19 +1,40 @@
-Polynum
-Polynum multiplication using FFT will be "fast_mul"
+We'll implement complex numbers and integers mod p - we want both to extend the same interface.
+Implement simple NumberType interface (add, sub, mult, div, root of unity, etc?)
+
+Implement complex number class:
+class Complex
+ - precision issues. Will floating point suffice?
+ - Do we want to use an existing one?
+ - Addition, Substraction
+ - Switching between cartesian and polar form
+ - Multiplication, Division
+ - Finding roots of unity of order n
+ - Run some tests
+ 
+Implement the field of integers mod p:
+template <unsigned P> class IntModulo
+    - We need P to be large enough so that we never experience modulo (see presentation and adapt what they did)
+    - P is ~ 1,073,750,017, g = 5, omega = 381,780,781 # omega = g**(p-1)/1024
+    - omega SHOULD BE POWER OF TWO to ease calculations
+    - Addition, Substraction
+    - Smart multiplication (shift), division (do we need it?)
+    - Smart modulo (see presentation)
+    - Run some tests
+
+Implement generic FFT:
+*** SHOULD BE WRITTEN GENERICLY so FFT function shouldn't care if working under RING of Integers Mod P or Complex Numbers.
 	1. implement FFT over a vector
+    template <class NumType> vector<NumType> FFT(vector<NumType> v)
 	2. implement FFT^-1 over a vector.
-	3. implement convolution over two vectors
-	4. implement correlation (expand data so convolution won't be cyclic)
-
-	*** SHOULD BE WRITTEN GENERICLY so FFT function shouldn't care if working under RING of Integers Mod P or Complex Numbers.
-
-Polynum ** 2 (multiplcation)
-Polynum * c (where c is an Integer)
-BigIntegers (mod P)
-P is ~ 1,073,750,017
-g = 5
-omega = 381,780,781 # omega = g**(p-1)/1024
-omega SHOULD BE POWER OF TWO to ease calculations
+    template <class NumType> vector<NumType> inverseFFT(vector<NumType> v)
+    
+class Polynomial
+Polynomial multiplication using FFT will be "fast_mul"
+	1. implement convolution over two vectors (expand data so convolution won't be cyclic)
+	2. implement correlation (expand data so convolution won't be cyclic)
+    Polynomial ** 2 
+    Polynomial1 * Polynomial2 (multiplcation)
+    Polynomial * c (where c is an Integer)
 
 X miller-rabin (For other p)
 X inv_mod (mod P) # BigInt should support % and /
@@ -24,4 +45,4 @@ fast "pattern in text" (using FFT):
 	you get 2 vectors.
 
 	summing 3 correlations over those vector
-	if one of vector's co-ordinates eq 0 so pattern was found in text and the index is the co-ordinate :)
+	if one of resulting vector's co-ordinates eq 0 so pattern was found in text and the index is the coordinate :)
