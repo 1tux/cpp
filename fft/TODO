@@ -17,3 +17,11 @@ omega SHOULD BE POWER OF TWO to ease calculations
 
 X miller-rabin (For other p)
 X inv_mod (mod P) # BigInt should support % and /
+
+fast "pattern in text" (using FFT):
+	you get 2 strings.
+	replace each char with a number.
+	you get 2 vectors.
+
+	summing 3 correlations over those vector
+	if one of vector's co-ordinates eq 0 so pattern was found in text and the index is the co-ordinate :)
