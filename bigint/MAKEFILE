@@ -1,0 +1,2 @@
+all:
+	g++ bigint.cc bigint_test.cc -o main
