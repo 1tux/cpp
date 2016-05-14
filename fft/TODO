@@ -1,0 +1,19 @@
+Polynum
+Polynum multiplication using FFT will be "fast_mul"
+	1. implement FFT over a vector
+	2. implement FFT^-1 over a vector.
+	3. implement convolution over two vectors
+	4. implement correlation (expand data so convolution won't be cyclic)
+
+	*** SHOULD BE WRITTEN GENERICLY so FFT function shouldn't care if working under RING of Integers Mod P or Complex Numbers.
+
+Polynum ** 2 (multiplcation)
+Polynum * c (where c is an Integer)
+BigIntegers (mod P)
+P is ~ 1,073,750,017
+g = 5
+omega = 381,780,781 # omega = g**(p-1)/1024
+omega SHOULD BE POWER OF TWO to ease calculations
+
+X miller-rabin (For other p)
+X inv_mod (mod P) # BigInt should support % and /
